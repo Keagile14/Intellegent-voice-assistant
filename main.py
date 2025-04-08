@@ -39,7 +39,7 @@ def create_none():
                 recognizer.adjust_for_ambient_noise(mic, duration=0.2)
                 audio = recognizer.listen(mic)
 
-                filename = recognizer.recognise_google(audio)
+                filename = recognizer.recognize_google(audio)
                 filename = filename.lower()
             with open(filename, 'w') as f:
                 f.write(note)
@@ -66,7 +66,7 @@ def add_tudo():
                 recognizer.adjust_for_ambient_noise(mic,duration=0.2)
                 audio = recognizer.listen(mic)
 
-                item = recognizer.recognizer_google(audio)
+                item = recognizer.recognize_google(audio)
                 item =  item.lower()
 
                 tudo_list.append(item)
@@ -113,7 +113,7 @@ mappings = {
     
 
 assistant =  GenericAssistant('intents.json', intent_methods = mappings)
-assistant.train_model()
+# assistant.train_model()
 
 while True:
 

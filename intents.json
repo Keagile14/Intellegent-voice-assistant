@@ -4,14 +4,14 @@
     "responses":["Hello Sir!","Hello, what can I do for you?"]
         
 },
-{"tags":"add_tudo",
+{"tag":"add_tudo",
 "patterns":["I want to add a tudo", "add a new tudo", "add a tudo to my list","new item on my tudo list"],
 "responses":[""]
 },
-{"tags":"show_tudos",
+{"tag":"show_tudos",
 "patterns":["Show my tudos", "What are my tudos", "What is on my tudo list"],
 "responses":[""]},
-{"tags":"exit",
+{"tag":"exit",
 "responses":["Bye","Stop","Quit","I want to quit","Goodbye","I want to exit","I have tp go"]}
 
 ]}
