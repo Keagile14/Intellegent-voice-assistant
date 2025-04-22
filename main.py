@@ -1,4 +1,4 @@
-from neuralintents import BasicAssistant
+from neuralintents import GenericAssistant
 import speech_recognition
 import pyttsx3 as tts
 import sys
@@ -115,7 +115,7 @@ mappings = {
 
     
 
-assistant =  BasicAssistant('intents.json',mappings=intent_methods)
+assistant =  GenericAssistant('intents.json',mapping_methods=mappings)
 
 assistant.fit_model()
 assistant.save_model()
