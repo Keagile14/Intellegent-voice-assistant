@@ -1,5 +1,5 @@
-from neuralintents import GenericAssistant
-import speechrecognition
+from neuralintents import BasicAssistant
+import speech_recognition
 import pyttsx3 as tts
 import sys
 
@@ -41,6 +41,7 @@ def create_none():
 
                 filename = recognizer.recognize_google(audio)
                 filename = filename.lower()
+
             with open(filename, 'w') as f:
                 f.write(note)
                 done = True
@@ -107,18 +108,26 @@ mappings = {
     "show_tudo" : show_tudos,
     "exit": quit
 }
+
+
                 
 
 
     
 
-assistant =  GenericAssistant('intents.json', intent_methods = mappings)
-# assistant.train_model()
+assistant =  BasicAssistant('intents.json',mappings=intent_methods)
+
+assistant.fit_model()
+assistant.save_model()
+
+
+assistant.train_model()
 
 while True:
 
     try:
         with speech_recognition.Microphone() as mic:
+            recognizer.adjust_for_ambient_noise(mic, duration=0.2)
             audio = recognizer.listen(mic)
 
             message = recognizer.recognizer_google(audio)
@@ -130,5 +139,5 @@ while True:
 
     except speech_recognition.UnknownValueError:
             recognizer = speech_recognition.Recognizer()
-            # speaker.say("I did not understand! Please try again!")
-            # speaker.runAndWait()
+            speaker.say("I did not understand! Please try again!")
+            speaker.runAndWait()
