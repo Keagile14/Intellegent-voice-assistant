@@ -1,5 +1,5 @@
 from neuralintents import GenericAssistant
-import speech_recognition
+import speechrecognition
 import pyttsx3 as tts
 import sys
 
