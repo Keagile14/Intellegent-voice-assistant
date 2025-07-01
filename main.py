@@ -62,7 +62,7 @@ def add_tudo():
 
     while not done:
         try:
-            with speech_recognition() as mic:
+            with speech_recognition.Microphone() as mic:
 
                 recognizer.adjust_for_ambient_noise(mic,duration=0.2)
                 audio = recognizer.listen(mic)
@@ -95,18 +95,19 @@ def greetings():
     speaker.say("What can I do for you?")
     speaker.runAndWait()
 
-def quit():
-
+def exit_program():
     speaker.say("Bye")
     speaker.runAndWait()
     sys.exit(0)
+
 
 mappings = {
     "greeting" : greetings,
     "create_note": create_none,
     "add_tudo" : add_tudo,
     "show_tudo" : show_tudos,
-    "exit": quit
+   "exit": exit_program
+
 }
 
 
@@ -130,7 +131,8 @@ while True:
             recognizer.adjust_for_ambient_noise(mic, duration=0.2)
             audio = recognizer.listen(mic)
 
-            message = recognizer.recognizer_google(audio)
+            message = recognizer.recognize_google(audio)
+
 
             message = message.lower()
 
